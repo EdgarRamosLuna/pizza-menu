@@ -18,6 +18,7 @@ const Background = ({ children }) => {
       {images.map((image, index) => {
         return (
           <div
+          key={index}
             className="bg-item"
             style={{ left: `${image.l}%`, top: `${image.t}%` }}
           >
