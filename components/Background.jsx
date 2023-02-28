@@ -26,7 +26,7 @@ const Background = ({ children }) => {
               src={`/assets/img/${image.img}.png`}
               width={image.w}
               height={image.h}
-              alt=""
+              alt={`logo${index}`}
             />
           </div>
         );
