@@ -8,7 +8,7 @@ const Header = () => {
         <div className="menu">
           <ul>
             <li className="logo">
-              <img
+              <Image
                 src="/assets/img/logo.png"
                 alt="logo"
                 width={75}
