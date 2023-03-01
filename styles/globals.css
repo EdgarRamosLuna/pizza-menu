@@ -128,7 +128,7 @@ main {
 .background {
   width: 100%;
   position: relative;
-  padding-bottom: 30px;
+  padding-bottom: 60px;
 }
 .bg-item {
   position: absolute;
