@@ -10,7 +10,7 @@ const Ing = ({ data, title }) => {
       </div>
       <div className="menu-items ings">
         {data.map((item, index) => {
-          if (Number(item.is_esp) !== 1 && Number(item.is_ing) === 1) {
+          if (Number(item.is_esp) !== 1 && Number(item.is_ing) === 1 && Number(item.is_esp) < 2 ) {
             return (
               <MenuItem key={index} price={``} className="m-i">
                 {item.name}
