@@ -46,7 +46,7 @@ const Background = ({ children }) => {
         // código a ejecutar si la pantalla es de un celular
         setImages([ { img: 0, w: 43, h: 49, l: 3, t: 10 },
           { img: 1, w: 42, h: 26, l: 86, t: 5 },
-          { img: 2, w: 60, h: 60, l: 3, t: 90 },
+          { img: 2, w: 50, h: 50, l: 2, t: 90 },
           { img: 2, w: 60, h: 60, l: 3, t: 38 },
           { img: 3, w: 63, h: 42, l: 80, t: 89 },
           { img: 0, w: 43, h: 49, l: 90, t: 40 },
