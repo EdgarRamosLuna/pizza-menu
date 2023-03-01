@@ -12,9 +12,10 @@ import Footer from "@/components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({ data, data2 }) {
-  const SendWp = () =>{
-    window.location.href = "https://wa.me/12345678901?text=Hola,%20%C2%BFc%C3%B3mo%20est%C3%A1s%3F";
-  }
+  const SendWp = () => {
+    window.location.href =
+      "https://wa.me/12345678901?text=Hola,%20%C2%BFc%C3%B3mo%20est%C3%A1s%3F";
+  };
   return (
     <>
       <Head>
@@ -36,12 +37,18 @@ export default function Home({ data, data2 }) {
       <main>
         <div className="wpbtn">
           <div className="wpbtn-container">
-            <a aria-label="Chat on WhatsApp" href="https://wa.me/528424236403?text=Hola,%20me%20gustaria%20realizar%20un%20pedido" target="_blank"><i className="fa-brands fa-whatsapp"></i></a>
+            <a
+              aria-label="Chat on WhatsApp"
+              href="https://wa.me/528424236403?text=Hola,%20me%20gustaria%20realizar%20un%20pedido"
+              target="_blank"
+            >
+              <i className="fa-brands fa-whatsapp"></i>
+            </a>
           </div>
         </div>
         <Header />
         <Background>
-          <Ing data={data2} title={"Ingredientes"} />
+          <Menu data={data} title={"Tamaños & Precios"} />
           <div className="pizzaImg">
             <Image
               src="/assets/img/pizza1.png"
@@ -51,6 +58,7 @@ export default function Home({ data, data2 }) {
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>
+          <Ing data={data2} title={"Ingredientes"} />
           <Esp data={data2} title={"Especialidades"} />
           <div className="pizzaImg">
             <Image
@@ -61,7 +69,6 @@ export default function Home({ data, data2 }) {
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>
-          <Menu data={data} title={"Tamaños & Precios"} />
         </Background>
       </main>
     </>
