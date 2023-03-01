@@ -16,7 +16,7 @@ const MenuItem = ({
     <div className={className}>
       <div className="item-head">
         <h4>{children}</h4>
-        <h4>{price}</h4>
+        {price !== "" ? <h4>{price}</h4> : ""}
       </div>
       {title === "Tamaños & Precios" ? (
         <div className="item-body">
