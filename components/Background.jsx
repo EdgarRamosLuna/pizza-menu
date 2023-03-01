@@ -31,7 +31,7 @@ const Background = ({ children }) => {
     console.log("Este dispositivo no es un celular");
   
   }*/
-    if (window.innerWidth < 568) {
+    if (window.innerWidth < 668) {
       // código a ejecutar si la pantalla es de un celular
       setImages([ { img: 0, w: 63, h: 69, l: 3, t: 10 },
         { img: 1, w: 62, h: 46, l: 86, t: 5 },
@@ -42,7 +42,7 @@ const Background = ({ children }) => {
         { img: 3, w: 83, h: 62, l: 3, t: 60 },
         { img: 1, w: 62, h: 46, l: 85, t: 60 },]);
     }
-    if (window.innerWidth < 480) {
+    if (window.innerWidth < 580) {
         // código a ejecutar si la pantalla es de un celular
         setImages([ { img: 0, w: 43, h: 49, l: 3, t: 10 },
           { img: 1, w: 42, h: 26, l: 86, t: 5 },
