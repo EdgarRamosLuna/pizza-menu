@@ -16,6 +16,11 @@ const Header = () => {
               />
             </li>
           </ul>
+          <div className="info">
+          {`Calle Reforma # 15 zona centro, Parras Coahuila
+          🛵 842 422 0123`}
+
+          </div>
         </div>
 
         {/*

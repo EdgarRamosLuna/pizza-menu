@@ -13,7 +13,7 @@ const Menu = ({ data, title }) => {
         <div className="menu-items">
           {data.map((item, index) => {
             if (index <= 5) {
-              return <MenuItem key={index} price={`$${item.price}`}>{item.size}</MenuItem>;
+              return <MenuItem title={title} key={index} price={`$${item.price}`} chstedm={item.chstedm} chstedp={item.chstedp} exch={item.exch} exin={item.exin} fin={item.fin} pas={item.pas} >{item.size}</MenuItem>;
             }
           })}
         </div>

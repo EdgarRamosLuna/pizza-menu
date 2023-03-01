@@ -65,6 +65,7 @@ h1 {
   height: 176px;
   display: flex;
   box-sizing: border-box;
+  justify-content: space-between;
 }
 .menu ul {
   max-width: 200px;
@@ -81,6 +82,7 @@ main {
   height: 100vh;
   overflow: hidden;
   overflow-y: auto;
+  position: relative;
 }
 .menu::before {
   content: "";
@@ -112,7 +114,8 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 35px;
+  min-height: 35px;
+  flex-wrap: wrap;
 }
 .menu-text {
   width: 100%;
@@ -125,6 +128,7 @@ main {
 .background {
   width: 100%;
   position: relative;
+  padding-bottom: 30px;
 }
 .bg-item {
   position: absolute;
@@ -170,12 +174,81 @@ scrollbar {
   align-items: center;
   margin: 18px 0;
 }
-.logo{
-  font-family: 'Pizza';
-  color:#fff;
+.logo {
+  font-family: "Pizza";
+  color: #fff;
   font-size: 2em;
 }
-.pizzas{
+.pizzas {
   font-family: "FrancoisOne";
   font-size: 0.5em;
+}
+.ings div {
+  width: 50%;
+  white-space: pre;
+  justify-content: center;
+}
+
+.info {
+  position: relative;
+  display: flex;
+  padding-top: 5px;
+  color: #fefefe;
+  font-family: "FrancoisOne";
+  font-size: 1.5em;
+  white-space: pre-line;
+  text-align: right;
+}
+.wpbtn {
+  position: absolute;
+  z-index: 1;
+  height: 100vh;
+  left: 5px;
+}
+.wpbtn-container {
+  position: fixed;
+  z-index: 1;
+  background: green;
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  font-size: 1.4em;
+  bottom: 10px;
+}
+.wpbtn-container a {
+  text-decoration: none;
+  color: #fff;
+}
+
+@media (max-width: 680px) {
+  .ings div {
+  }
+  
+  .info {
+    font-size: 1em;
+    padding-right: 5px;
+    box-sizing: border-box;
+  }
+  .menu ul {
+    max-width: 200px;
+    width: 30%;
+    height: 80%;
+  }
+  .menu-items{
+    max-width: 60%;
+  }
+  .ings {
+    max-width: 75%;
+  }
+}
+.item-body ul {
+  width: 100%;
+}
+.item-body {
+  box-sizing: border-box;
+  padding: 0 5px;
 }
