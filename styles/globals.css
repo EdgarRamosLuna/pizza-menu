@@ -108,6 +108,7 @@ main {
   flex-wrap: wrap;
   max-width: 40%;
   margin: 0 auto;
+  justify-content: space-evenly;
 }
 .menu-items div {
   width: 100%;
@@ -121,6 +122,9 @@ main {
   width: 100%;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
 }
 #bg {
   width: 100%;
@@ -251,4 +255,5 @@ scrollbar {
 .item-body {
   box-sizing: border-box;
   padding: 0 5px;
+  padding-right: 0;
 }

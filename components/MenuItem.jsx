@@ -11,6 +11,7 @@ const MenuItem = ({
   title,
   fin,
   pas,
+  indx,
 }) => {
   return (
     <div className={className}>
@@ -64,6 +65,24 @@ const MenuItem = ({
             )}
           </ul>
         </div>
+      ) : (
+        ""
+      )}
+
+      {title === "Otros Productos" ? (
+
+        children === "Boneless" ? 
+        <div className="item-body">
+          <>
+            
+              <ul className="t-cont">
+                <li>BBQ</li>
+                <li>Buffalo</li>
+                <li>M. Habanero</li>
+              </ul>
+            
+          </>
+        </div> : ""
       ) : (
         ""
       )}
