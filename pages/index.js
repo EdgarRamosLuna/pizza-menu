@@ -48,6 +48,7 @@ export default function Home({ data, data2 }) {
         </div>
         <Header />
         <Background>
+          
           <Menu data={data} title={"Tamaños & Precios"} />
           <div className="pizzaImg">
             <Image
@@ -59,7 +60,6 @@ export default function Home({ data, data2 }) {
             />
           </div>
           <Ing data={data2} title={"Ingredientes"} />
-          <Esp data={data2} title={"Especialidades"} />
           <div className="pizzaImg">
             <Image
               src="/assets/img/pizza2.png"
@@ -69,6 +69,7 @@ export default function Home({ data, data2 }) {
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>
+          <Esp data={data2} title={"Especialidades"} />
         </Background>
       </main>
     </>
