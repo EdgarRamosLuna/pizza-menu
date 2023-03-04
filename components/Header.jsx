@@ -9,10 +9,10 @@ const Header = () => {
           <ul>
             <li className="logo">
               <Image
-                src="/assets/img/pizzas.png"
+                src="/assets/img/logo.png"
                 alt="logo"
-                width={75}
-                height={109}
+                width={300}
+                height={72}
               />
             </li>
           </ul>
