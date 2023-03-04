@@ -13,6 +13,7 @@ const Header = () => {
                 alt="logo"
                 width={300}
                 height={72}
+                fill={true}
               />
             </li>
           </ul>
