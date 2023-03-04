@@ -11,8 +11,7 @@ const Header = () => {
               <Image
                 src="/assets/img/pjl.png"
                 alt="logo"
-                width={300}
-                height={72}
+                
                 fill={true}
               />
             </li>

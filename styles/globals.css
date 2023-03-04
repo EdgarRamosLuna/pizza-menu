@@ -250,8 +250,8 @@ scrollbar {
   }
   .menu ul {
     max-width: 200px;
-    width: 30%;
-    height: 80%;
+
+    height: 50%;
   }
   .menu-items {
     max-width: 60%;
@@ -267,4 +267,15 @@ scrollbar {
   box-sizing: border-box;
   padding: 0 5px;
   padding-right: 0;
+}
+.logo {
+  width: 300px;
+  height: 72px;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    width: 150px;
+    height: 42px;
+  }
 }
