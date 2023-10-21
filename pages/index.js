@@ -49,7 +49,7 @@ export default function Home({ data, data2, data3 }) {
         </div>
         <Header />
         <Background>
-          
+           
           <div className="pizzaImg">
             <Image
               src="/assets/img/pizza1.png"
