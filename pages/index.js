@@ -94,7 +94,7 @@ export default function Home({ data, data2, data3 }) {
 }
 
 export async function getServerSideProps() {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://pizza-jossepph-menu.vercel.app";
 
   const res = await fetch(`${apiUrl}/api/products_pizza`);
   const data = await res.json();
