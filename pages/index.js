@@ -4,7 +4,6 @@ import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import Header from "@/components/Header";
 import Menu from "@/components/Menu";
-import Background from "@/components/Background";
 import Ing from "@/components/Ing";
 import Esp from "@/components/Esp";
 import Footer from "@/components/Footer";
@@ -48,64 +47,85 @@ export default function Home({ data, data2, data3 }) {
           </div>
         </div>
         <Header />
-        <Background>
-          
-          <div className="pizzaImg">
-            <Image
-              src="/assets/img/pizza1.png"
-              alt=""
-              width={200}
-              height={200}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
+          <div className="body-container">
+            <div className="pizzaImg">
+              <Image
+                src="/assets/img/pizza1.png"
+                alt=""
+                width={200}
+                height={200}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                blurDataURL="data:..."
+                placeholder="blur"
+              />
+            </div>
+            <Menu data={data} title={"Tamaños & Precios"} />
+
+            <Ing data={data2} title={"Ingredientes"} />
+            <div className="pizzaImg">
+              <Image
+                src="/assets/img/pizza2.png"
+                alt=""
+                width={200}
+                height={200}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                blurDataURL="data:..."
+                placeholder="blur"
+              />
+            </div>
+            <Esp data={data2} title={"Especialidades"} />
+            <div className="pizzaImg">
+              <Image
+                src="/assets/img/op.png"
+                alt=""
+                width={200}
+                height={200}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                blurDataURL="data:..."
+                placeholder="blur"
+              />
+            </div>
+            <Oth data={data3} title={"Otros Productos"} />
           </div>
-          <Menu data={data} title={"Tamaños & Precios"} />
-          
-          <Ing data={data2} title={"Ingredientes"} />
-          <div className="pizzaImg">
-            <Image
-              src="/assets/img/pizza2.png"
-              alt=""
-              width={200}
-              height={200}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
-          </div>
-          <Esp data={data2} title={"Especialidades"} />
-          <div className="pizzaImg">
-            <Image
-              src="/assets/img/op.png"
-              alt=""
-              width={200}
-              height={200}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
-          </div>
-          <Oth data={data3} title={"Otros Productos"} />
-        </Background>
+
       </main>
     </>
   );
 }
 
 export async function getServerSideProps() {
-  const res = await fetch(
-    "http://phpstack-921351-3198370.cloudwaysapps.com/server/api/products_pizza"
-  );
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
 
+  const res = await fetch(`${apiUrl}/api/products_pizza`);
   const data = await res.json();
-  const res2 = await fetch(
-    "http://phpstack-921351-3198370.cloudwaysapps.com/server/api/products_materias_primas"
-  );
-  
+
+  const res2 = await fetch(`${apiUrl}/api/products_materias_primas`);
   const data2 = await res2.json();
-  const res3 = await fetch(
-    "http://phpstack-921351-3198370.cloudwaysapps.com/server/api/products_other"
-  );
-  
+
+  const res3 = await fetch(`${apiUrl}/api/products_other`);
   const data3 = await res3.json();
-  
 
   // Pass data to the page via props
   return { props: { data, data2, data3 } };
 }
+
+// export async function getServerSideProps() {
+//   const res = await fetch(
+//     "http://phpstack-921351-3198370.cloudwaysapps.com/server/api/products_pizza"
+//   );
+
+//   const data = await res.json();
+//   const res2 = await fetch(
+//     "http://phpstack-921351-3198370.cloudwaysapps.com/server/api/products_materias_primas"
+//   );
+
+//   const data2 = await res2.json();
+//   const res3 = await fetch(
+//     "http://phpstack-921351-3198370.cloudwaysapps.com/server/api/products_other"
+//   );
+
+//   const data3 = await res3.json();
+
+//   // Pass data to the page via props
+//   return { props: { data, data2, data3 } };
+// }

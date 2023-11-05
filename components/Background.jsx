@@ -1,84 +1,88 @@
-import Image from "next/image";
-import React, { useEffect, useState } from "react";
+// components/Background.js
 
-const imagesd = [
-  { img: 0, w: 83, h: 89, l: 10, t: 10 },
-  { img: 1, w: 82, h: 66, l: 80, t: 10 },
-  { img: 2, w: 100, h: 100, l: 10, t: 90 },
-  { img: 2, w: 100, h: 100, l: 15, t: 35 },
-  { img: 3, w: 103, h: 82, l: 80, t: 90 },
-  { img: 0, w: 83, h: 89, l: 90, t: 40 },
-  { img: 3, w: 103, h: 82, l: 5, t: 60 },
-  { img: 1, w: 82, h: 66, l: 85, t: 70 },
-];
-const Background = ({ children }) => {
-  const [images, setImages] = useState(imagesd);
+import React, { useEffect, useRef } from 'react';
+
+
+function Background({ children }) {
+  const containerRef = useRef(null);
+
   useEffect(() => {
-    // Verificar si el dispositivo es un celular
-    /*if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    // código a ejecutar si el dispositivo es un celular
-    console.log("Este dispositivo es un celular");
-    setImages([ { img: 0, w: 63, h: 69, l: 1, t: 10 },
-        { img: 1, w: 62, h: 46, l: 80, t: 10 },
-        { img: 2, w: 80, h: 80, l: 1, t: 90 },
-        { img: 2, w: 80, h: 80, l: 1, t: 38 },
-        { img: 3, w: 83, h: 62, l: 80, t: 90 },
-        { img: 0, w: 63, h: 69, l: 90, t: 40 },
-        { img: 3, w: 83, h: 62, l: 1, t: 60 },
-        { img: 1, w: 62, h: 46, l: 85, t: 60 },]);
-  } else {
-    // código a ejecutar si el dispositivo no es un celular
-    console.log("Este dispositivo no es un celular");
-  
-  }*/
-    if (window.innerWidth < 668) {
-      // código a ejecutar si la pantalla es de un celular
-      setImages([ { img: 0, w: 63, h: 69, l: 3, t: 10 },
-        { img: 1, w: 62, h: 46, l: 86, t: 5 },
-        { img: 2, w: 80, h: 80, l: 3, t: 90 },
-        { img: 2, w: 80, h: 80, l: 3, t: 38 },
-        { img: 3, w: 83, h: 62, l: 80, t: 90 },
-        { img: 0, w: 63, h: 69, l: 90, t: 40 },
-        { img: 3, w: 83, h: 62, l: 3, t: 60 },
-        { img: 1, w: 62, h: 46, l: 85, t: 60 },]);
+    const container = containerRef.current;
+    const ingredientsList = [
+      "/assets/img/0.png",
+      "/assets/img/1.png",
+      "/assets/img/2.png",
+      "/assets/img/3.png",
+      // ...otros ingredientes...
+    ];
+
+    let elementCount = 0;
+    let xPositions = [];  // Array para rastrear las posiciones x de los elementos
+
+    function createIngredient(src) {
+      const ingredient = document.createElement('div');
+      ingredient.classList.add('ingredient');
+      ingredient.style.backgroundImage = `url('${src}')`;
+      return ingredient;
     }
-    if (window.innerWidth < 580) {
-        // código a ejecutar si la pantalla es de un celular
-        setImages([ { img: 0, w: 43, h: 49, l: 3, t: 10 },
-          { img: 1, w: 42, h: 26, l: 86, t: 5 },
-          { img: 2, w: 50, h: 50, l: 2, t: 90 },
-          { img: 2, w: 60, h: 60, l: 3, t: 38 },
-          { img: 3, w: 63, h: 42, l: 85, t: 86 },
-          { img: 0, w: 43, h: 49, l: 90, t: 40 },
-          { img: 3, w: 63, h: 42, l: 3, t: 60 },
-          { img: 1, w: 42, h: 26, l: 85, t: 55 },]);
+
+    function startFalling(ingredient) {
+      if (elementCount >= 15) return;  // No crear más elementos si ya hay 15 en la pantalla
+
+      let startX;
+      let isOverlapping;
+      do {
+        isOverlapping = false;
+        startX = Math.random() * (window.innerWidth - 100);  // Posición inicial aleatoria en el eje X
+        // Verificar superposición con otros elementos
+        for (let xPos of xPositions) {
+          if (Math.abs(startX - xPos) < 100) {  // Asumiendo que cada elemento tiene un ancho de 100px
+            isOverlapping = true;
+            break;
+          }
+        }
+      } while (isOverlapping);
+
+      xPositions.push(startX);  // Agregar la posición x del nuevo elemento al array
+
+      ingredient.style.left = startX + 'px';  // Asignar la posición inicial en el eje X
+      container.appendChild(ingredient);  // Agregar el ingrediente al DOM solo si no hay superposición
+
+      elementCount++;  // Incrementar el contador cuando se crea un nuevo elemento
+
+      let posY = -3300;  // Posición inicial fuera de la vista
+      const speed = Math.random() + 0.5;  // Velocidad de caída aleatoria entre 0.5 y 1.5
+
+      function fall() {
+        posY += speed;  // Actualiza la posición en cada frame
+        ingredient.style.transform = `translateY(${posY}px)`;
+        if (posY > window.innerHeight) {  // Si el ingrediente está fuera de la vista por abajo
+          container.removeChild(ingredient);  // Eliminar el ingrediente del DOM
+          elementCount--;  // Decrementar el contador cuando un elemento sale de la pantalla
+          xPositions = xPositions.filter(xPos => xPos !== startX);  // Eliminar la posición x del array
+        } else {
+          requestAnimationFrame(fall);  // Continuar la animación
+        }
       }
 
-    return () => {};
+      fall();  // Iniciar la animación
+    }
+
+    const intervalId = setInterval(() => {
+      const src = ingredientsList[Math.floor(Math.random() * ingredientsList.length)];  // Seleccionar un ingrediente aleatorio
+      const ingredient = createIngredient(src);
+      startFalling(ingredient);
+    }, 2000);
+
+    return () => clearInterval(intervalId);  // Limpiar el intervalo cuando el componente se desmonte
+
   }, []);
 
   return (
-    <div className="background">
-      {images.map((image, index) => {
-        return (
-          <div
-            key={index}
-            className="bg-item"
-            style={{ left: `${image.l}%`, top: `${image.t}%` }}
-          >
-            <Image
-              src={`/assets/img/${image.img}.png`}
-              width={image.w}
-              height={image.h}
-              alt={`logo${index}`}
-            />
-          </div>
-        );
-      })}
-
+    <div className="container" ref={containerRef}>
       {children}
     </div>
   );
-};
+}
 
 export default Background;
