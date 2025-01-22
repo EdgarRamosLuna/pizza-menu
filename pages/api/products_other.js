@@ -4,7 +4,7 @@ export default function handler(req, res) {
       id: "1",
       id_item: "2863a0ca-e081-459a-8a4e-a479902634a8",
       product: "Calzone",
-      price: "60.00",
+      price: "85.00",
       ha: "0.00",
       sal: "0.00",
       doca: "0.00",
